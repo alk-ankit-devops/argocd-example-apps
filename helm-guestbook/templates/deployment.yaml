@@ -36,22 +36,22 @@ spec:
             httpGet:
               path: /
               port: http
-{{- with .Values.resources }}
+{{- if .Values.resources }}
           resources:
-            {{- toYaml . | nindent 12 }}
+{{ toYaml .Values.resources | nindent 12 }}
 {{- end }}
 
-      {{- with .Values.nodeSelector }}
+      {{- if .Values.nodeSelector }}
       nodeSelector:
-        {{- toYaml . | nindent 8 }}
+{{ toYaml .Values.nodeSelector | nindent 8 }}
       {{- end }}
 
-      {{- with .Values.affinity }}
+      {{- if .Values.affinity }}
       affinity:
-        {{- toYaml . | nindent 8 }}
+{{ toYaml .Values.affinity | nindent 8 }}
       {{- end }}
 
-      {{- with .Values.tolerations }}
+      {{- if .Values.tolerations }}
       tolerations:
-        {{- toYaml . | nindent 8 }}
+{{ toYaml .Values.tolerations | nindent 8 }}
       {{- end }}
